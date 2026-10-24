@@ -51,7 +51,7 @@ h1 em,h2 em{font-style:italic;color:var(--clay)}
 
 header{position:sticky;top:0;z-index:40;background:rgba(250,244,233,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .25s ease,box-shadow .25s ease}
 header.stuck{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(43,36,29,.05)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:24px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:24px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19.5px;letter-spacing:-.01em;text-decoration:none}
 .brand .mark{width:34px;height:34px;border-radius:11px;background:var(--clay);color:var(--shell);display:grid;place-items:center;font-size:17px;font-weight:600;box-shadow:0 6px 16px rgba(180,86,47,.28)}
 nav{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink2)}
@@ -84,9 +84,42 @@ h1{max-width:820px;margin:0 auto}
 .show-dots button:hover{background:#c9b391}
 .show-dots button.is-on{width:26px;background:var(--clay)}
 .show-dots button:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.device-switch{display:flex;justify-content:center;gap:6px;margin-bottom:20px}
+.device-switch button{font-family:Karla,sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--ink2);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.device-switch button:hover{border-color:#d6c4a6}
+.device-switch button.is-on{background:var(--ink);border-color:var(--ink);color:var(--linen)}
+.frame-phone{display:none;max-width:326px;margin:0 auto;background:#231d17;border-radius:38px;padding:12px;box-shadow:0 30px 70px rgba(43,36,29,.24)}
+.frame-phone::before{content:"";display:block;width:88px;height:5px;border-radius:999px;background:#4a4036;margin:2px auto 10px}
+.phone-shots{position:relative;aspect-ratio:390/844;border-radius:27px;overflow:hidden;background:#fff}
+.phone-shots img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .8s ease}
+.phone-shots img.is-on{opacity:1}
+.show.phone .frame-desktop{display:none}
+.show.phone .frame-phone{display:block}
+.show.phone{padding-bottom:34px}
+
+.ba{background:var(--shell);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ba .head{max-width:660px}
+.ba h2{margin-bottom:14px}
+.ba .head p{color:var(--ink2);font-size:16px}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:38px}
+.ba-figure{margin:0}
+.ba-slider{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--linen2);cursor:ew-resize;box-shadow:0 18px 44px rgba(43,36,29,.1)}
+.ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.ba-after{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos,50%))}
+.ba-slider .tag-b,.ba-slider .tag-a{position:absolute;top:12px;z-index:3;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,253,248,.92);color:var(--ink2);border:1px solid var(--line)}
+.ba-slider .tag-b{left:12px}
+.ba-slider .tag-a{right:12px;background:rgba(180,86,47,.92);color:#fffdf8;border-color:transparent}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(43,36,29,.18);z-index:2}
+.ba-knob{position:absolute;top:50%;left:var(--pos,50%);transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(43,36,29,.28);display:grid;place-items:center;color:var(--ink);z-index:4;pointer-events:none}
+.ba-slider input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:5}
+.ba-slider input[type=range]:focus-visible+.ba-knob{outline:3px solid var(--clay);outline-offset:2px}
+.ba-figure figcaption{margin-top:14px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ba-figure strong{font-family:Fraunces;font-size:17px;font-weight:600}
+.ba-figure span{font-size:13px;color:#8a7a66}
+.ba-note{margin-top:24px;font-size:12.5px;color:#8a7a66}
 
 section{padding:88px 0;scroll-margin-top:76px}
-#contact,#offer,#about,#work{scroll-margin-top:76px}
+#contact,#offer,#about,#work,#beforeafter{scroll-margin-top:76px}
 .work{background:var(--linen)}
 .work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .work-head p{color:var(--ink2);max-width:380px;font-size:15px}
@@ -159,12 +192,14 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:var(--linen2)}
 }
 @media(max-width:960px){
   .grid{grid-template-columns:repeat(2,1fr)}
+  .ba-grid{grid-template-columns:1fr}
   .offer .cols{grid-template-columns:1fr;gap:40px}
   .about .cols{grid-template-columns:1fr;gap:34px}
   .portrait{max-width:240px}
 }
 @media(max-width:760px){
   nav{display:none}
+  .nav-in{padding:18px 0;gap:14px}
   .hero{padding-top:52px}
   .stamps{gap:26px;justify-content:space-between;max-width:420px;margin-left:auto;margin-right:auto}
   .stamps b{font-size:19px}
@@ -201,6 +236,7 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:var(--linen2)}
     <a class="brand" href="#top"><span class="mark">S</span>Sitesmith</a>
     <nav>
       <a href="#work">Work</a>
+      <a href="#beforeafter">Before / after</a>
       <a href="#offer">How it works</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -227,8 +263,12 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:var(--linen2)}
     </div>
   </section>
 
-  <div class="show reveal">
-    <div class="browser">
+  <div class="show reveal" id="show">
+    <div class="device-switch" id="device-switch" role="group" aria-label="Preview device">
+      <button type="button" class="is-on" data-device="desktop">Desktop</button>
+      <button type="button" data-device="phone">Phone</button>
+    </div>
+    <div class="browser frame-desktop">
       <div class="bar"><i></i><i></i><i></i><span id="show-url">matveybodyak.github.io/demos/kesap</span></div>
       <div class="shots" id="shots">
         <img class="shot is-on" src="img/show-kesap.jpg" width="1100" height="688" alt="Kesap Clean demo home page"/>
@@ -237,6 +277,16 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:var(--linen2)}
         <img class="shot" src="img/show-cervantes.jpg" width="1100" height="688" loading="lazy" alt="Cervantes Cleaning demo home page"/>
         <img class="shot" src="img/show-tts.jpg" width="1100" height="688" loading="lazy" alt="Time to Shine demo home page"/>
         <img class="shot" src="img/show-chopshop.jpg" width="1100" height="688" loading="lazy" alt="The Chop Shop demo home page"/>
+      </div>
+    </div>
+    <div class="frame-phone">
+      <div class="phone-shots" id="phone-shots">
+        <img class="is-on" src="img/phone-kesap.jpg" width="390" height="844" alt="Kesap Clean demo on a phone"/>
+        <img src="img/phone-scranton.jpg" width="390" height="844" loading="lazy" alt="Scranton Cleaners demo on a phone"/>
+        <img src="img/phone-streakfree.jpg" width="390" height="844" loading="lazy" alt="Streak Free demo on a phone"/>
+        <img src="img/phone-cervantes.jpg" width="390" height="844" loading="lazy" alt="Cervantes Cleaning demo on a phone"/>
+        <img src="img/phone-tts.jpg" width="390" height="844" loading="lazy" alt="Time to Shine demo on a phone"/>
+        <img src="img/phone-chopshop.jpg" width="390" height="844" loading="lazy" alt="The Chop Shop demo on a phone"/>
       </div>
     </div>
     <div class="show-dots" id="show-dots">
@@ -315,6 +365,43 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:var(--linen2)}
         </a>
       </div>
       <p class="work-note reveal">Concept demos built on public information — not affiliated with the businesses shown. The last step before launch is swapping in your real photos and phone number.</p>
+    </div>
+  </section>
+
+  <section class="ba" id="beforeafter">
+    <div class="wrap">
+      <div class="head reveal">
+        <div class="kicker">Before / after</div>
+        <h2>Drag the handle. That's the whole product.</h2>
+        <p>Left is the site their customers see today, right is the demo built for them. Same business, same reviews, same phone number — only the design changes.</p>
+      </div>
+      <div class="ba-grid">
+        <figure class="ba-figure reveal">
+          <div class="ba-slider" data-slider>
+            <img class="ba-before" src="img/before-kesap.jpg" width="1100" height="688" loading="lazy" alt="Kesap Clean's current website"/>
+            <div class="ba-after"><img src="img/show-kesap.jpg" width="1100" height="688" loading="lazy" alt="Kesap Clean concept redesign"/></div>
+            <span class="tag-b">Today</span>
+            <span class="tag-a">Demo</span>
+            <div class="ba-line"></div>
+            <div class="ba-knob"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></div>
+            <input type="range" min="0" max="100" value="50" step="1" aria-label="Compare Kesap Clean before and after"/>
+          </div>
+          <figcaption><strong>Kesap Clean</strong><span>Plainfield, IL · house cleaning</span></figcaption>
+        </figure>
+        <figure class="ba-figure reveal">
+          <div class="ba-slider" data-slider>
+            <img class="ba-before" src="img/before-tts.jpg" width="1100" height="688" loading="lazy" alt="Time to Shine's current website"/>
+            <div class="ba-after"><img src="img/show-tts.jpg" width="1100" height="688" loading="lazy" alt="Time to Shine concept redesign"/></div>
+            <span class="tag-b">Today</span>
+            <span class="tag-a">Demo</span>
+            <div class="ba-line"></div>
+            <div class="ba-knob"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></div>
+            <input type="range" min="0" max="100" value="50" step="1" aria-label="Compare Time to Shine before and after"/>
+          </div>
+          <figcaption><strong>Time to Shine</strong><span>Casper, WY · pet-friendly cleaning</span></figcaption>
+        </figure>
+      </div>
+      <p class="ba-note reveal">Screenshots of the live sites, taken the day the demos were built.</p>
     </div>
   </section>
 
@@ -408,14 +495,17 @@ if('IntersectionObserver' in window){
 }
 
 const shots=[...document.querySelectorAll('.shots .shot')];
+const phoneShots=[...document.querySelectorAll('#phone-shots img')];
 const dots=[...document.querySelectorAll('#show-dots button')];
 const urlbar=document.getElementById('show-url');
+const showEl=document.getElementById('show');
 const labels=['matveybodyak.github.io/demos/kesap','matveybodyak.github.io/demos/scranton','matveybodyak.github.io/demos/streakfree','matveybodyak.github.io/demos/cervantes','matveybodyak.github.io/demos/tts','matveybodyak.github.io/demos/chopshop'];
 const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let current=0,timer=null;
 function paint(i){
   current=i;
   shots.forEach((s,k)=>s.classList.toggle('is-on',k===i));
+  phoneShots.forEach((s,k)=>s.classList.toggle('is-on',k===i));
   dots.forEach((d,k)=>{d.classList.toggle('is-on',k===i);d.setAttribute('aria-pressed',String(k===i));});
   urlbar.textContent=labels[i];
 }
@@ -426,6 +516,18 @@ function start(){
 }
 function stop(){ if(timer){clearInterval(timer);timer=null;} }
 dots.forEach((d,k)=>d.addEventListener('click',()=>{paint(k);start();}));
+document.querySelectorAll('#device-switch button').forEach((b)=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#device-switch button').forEach((x)=>x.classList.toggle('is-on',x===b));
+    showEl.classList.toggle('phone',b.dataset.device==='phone');
+  });
+});
+document.querySelectorAll('[data-slider]').forEach((sl)=>{
+  const range=sl.querySelector('input[type=range]');
+  const set=(v)=>sl.style.setProperty('--pos',v+'%');
+  set(range.value);
+  range.addEventListener('input',()=>set(range.value));
+});
 document.addEventListener('visibilitychange',()=>{document.hidden?stop():start();});
 start();
 </script>
